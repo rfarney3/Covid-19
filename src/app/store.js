@@ -1,8 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import confirmedReducer from '../slices/confirmedSlice';
+import liveReducer from '../slices/liveSlice';
+import summaryReducer from '../slices/summarySlice';
 
 export default configureStore({
-  reducer: {
-    counter: counterReducer,
-  },
+    reducer: {
+        confirmed: confirmedReducer,
+        live: liveReducer,
+        summary: summaryReducer
+    }
 });
