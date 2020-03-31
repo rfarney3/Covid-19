@@ -84,3 +84,13 @@ export const Spinner = styled.div`
         }
     }
 `;
+
+export const MapContainer = styled.div`
+    display: flex;
+    height: 100vw;
+    width: 100vh;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+`;

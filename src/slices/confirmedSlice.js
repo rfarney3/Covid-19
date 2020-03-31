@@ -39,17 +39,17 @@ export const confirmedSelector = state => state.confirmed;
 export default confirmedSlice.reducer;
 
 // Asynchronous thunk action
-export function fetchConfirmed() {
+export function fetchConfirmed(country) {
     return async dispatch => {
         dispatch(getConfirmed());
 
         try {
             const response = await fetch(
-                'https://api.covid19api.com/country/us/status/confirmed'
+                `https://api.covid19api.com/country/${country}/status/confirmed`
             );
             const data = await response.json();
-            const locationData = data.slice(400);
-            dispatch(getConfirmedSuccess(locationData));
+
+            dispatch(getConfirmedSuccess(data));
         } catch (error) {
             dispatch(getConfirmedFailure());
         }

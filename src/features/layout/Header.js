@@ -1,15 +1,61 @@
-import React from 'react';
-import * as CSS from './Layout.css';
+import React, { Component } from 'react';
+import {
+    Container,
+    Menu,
+    Responsive,
+    Segment,
+    Visibility
+} from 'semantic-ui-react';
 
-export const Header = () => {
-    return (
-        <CSS.Header>
-            <CSS.Tab>
-                <a href="/">Home</a>
-            </CSS.Tab>
-            <CSS.Tab>
-                <a href="/country">Country</a>
-            </CSS.Tab>
-        </CSS.Header>
-    );
+const getWidth = () => {
+    const isSSR = typeof window === 'undefined';
+
+    return isSSR ? Responsive.onlyTablet.minWidth : window.innerWidth;
 };
+
+export class Head extends Component {
+    state = {};
+
+    hideFixedMenu = () => this.setState({ fixed: false });
+    showFixedMenu = () => this.setState({ fixed: true });
+
+    render() {
+        const { children } = this.props;
+        const { fixed } = this.state;
+
+        return (
+            <Responsive
+                getWidth={getWidth}
+                minWidth={Responsive.onlyTablet.minWidth}
+            >
+                <Visibility once={false}>
+                    <Segment
+                        inverted
+                        textAlign="center"
+                        style={{ minHeight: 75, padding: '1em 0em' }}
+                        vertical
+                    >
+                        <Menu
+                            fixed={fixed ? 'top' : null}
+                            inverted={!fixed}
+                            pointing={!fixed}
+                            secondary={!fixed}
+                            size="large"
+                        >
+                            <Container>
+                                <Menu.Item as="a">
+                                    <a href="/">Home</a>
+                                </Menu.Item>
+                                <Menu.Item as="a">
+                                    <a href="/Testing">Testing</a>
+                                </Menu.Item>
+                            </Container>
+                        </Menu>
+                    </Segment>
+                </Visibility>
+
+                {children}
+            </Responsive>
+        );
+    }
+}

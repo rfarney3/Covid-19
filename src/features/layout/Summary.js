@@ -15,8 +15,8 @@ const useStyles = makeStyles(theme => ({
 export const Summary = () => {
     const dispatch = useDispatch();
     const [filteredSumm, setSummary] = useState([]);
+    const [query, setQuery] = useState();
     const { summary, loading, hasErrors } = useSelector(summarySelector);
-    const classes = useStyles();
 
     useEffect(() => {
         dispatch(fetchSummary());
@@ -27,33 +27,53 @@ export const Summary = () => {
         if (hasErrors) return <p>Unable to display list of countries.</p>;
 
         return summ.map(country => (
-            <CSS.StyledLink to={`/country/${country.Country}`}>
-                <CSS.StyledListItem button key={country.Country}>
-                    {country.Country}: {country.TotalConfirmed}
-                </CSS.StyledListItem>
-            </CSS.StyledLink>
+            <div class="ui segment">
+                <CSS.StyledLink to={`/country/${country.Country}`}>
+                    <CSS.StyledListItem button key={country.Country}>
+                        {country.Country}: {country.TotalConfirmed} Confirmed
+                        Cases
+                    </CSS.StyledListItem>
+                </CSS.StyledLink>
+            </div>
         ));
     };
 
     const handleChange = event => {
+        setQuery(event.target.value.toLowerCase());
         let newSumm = summary.filter(country =>
-            country.Country.toLowerCase().includes(
-                event.target.value.toLowerCase()
-            )
+            country.Country.toLowerCase().includes(query)
         );
         setSummary(newSumm);
     };
 
-    console.log('summary', filteredSumm);
     return (
-        <CSS.TotalsContainer className={classes.root}>
-            Total Confirmed Cases
-            <input onChange={handleChange} placeholder="filter countries" />
-            <CSS.StyledList>
-                {filteredSumm.length
-                    ? renderList(filteredSumm)
-                    : renderList(summary)}
-            </CSS.StyledList>
-        </CSS.TotalsContainer>
+        <>
+            <div class="ui placeholder segment">
+                <div class="ui two column stackable center aligned grid">
+                    <div class="middle aligned row">
+                        <div class="column">
+                            <div class="ui icon header">
+                                <i class="search icon"></i>
+                                Find Total Confirmed Cases by Country
+                            </div>
+                            <div class="field">
+                                <div class="ui search">
+                                    <div class="ui icon input">
+                                        <input
+                                            onChange={handleChange}
+                                            class="prompt"
+                                            type="text"
+                                            placeholder="Search countries..."
+                                        />
+                                        <i class="search icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="results">{query ? renderList(filteredSumm) : null}</div>
+        </>
     );
 };

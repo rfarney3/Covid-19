@@ -3,7 +3,8 @@ import { createSlice } from '@reduxjs/toolkit';
 export const initialState = {
     loading: false,
     hasErrors: false,
-    live: []
+    live: [],
+    confirmed: []
 };
 
 const liveSlice = createSlice({
@@ -35,17 +36,17 @@ export const liveSelector = state => state.live;
 export default liveSlice.reducer;
 
 // Asynchronous thunk action
-export function fetchLive() {
+export function fetchLive(country) {
     return async dispatch => {
         dispatch(getLive());
 
         try {
             const response = await fetch(
-                'https://api.covid19api.com/country/us/status/confirmed/live'
+                `https://api.covid19api.com/country/${country}/status/confirmed/live`
             );
             const data = await response.json();
-            const locationData = data.slice(400);
-            dispatch(getLiveSuccess(locationData));
+
+            dispatch(getLiveSuccess(data));
         } catch (error) {
             dispatch(getLiveFailure());
         }

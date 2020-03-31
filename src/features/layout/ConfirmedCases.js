@@ -1,24 +1,24 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchLive, liveSelector } from '../../slices/liveSlice';
+import { fetchConfirmed, confirmedSelector } from '../../slices/confirmedSlice';
 import GoogleMapReact from 'google-map-react';
 import * as CSS from './Layout.css';
 
-export const LiveCases = ({ country }) => {
+export const ConfirmedCases = ({ country }) => {
     const dispatch = useDispatch();
-    const { live } = useSelector(liveSelector);
+    const { confirmed } = useSelector(confirmedSelector);
 
     useEffect(() => {
-        dispatch(fetchLive(country));
+        dispatch(fetchConfirmed(country));
     }, [dispatch]);
 
     const getCoords = () => {
-        return live.map(({ Lat, Lon }) => ({ lat: Lat, lng: Lon }));
+        return confirmed.map(({ Lat, Lon }) => ({ lat: Lat, lng: Lon }));
     };
 
     return (
         <div>
-            <h1>Live Cases Heatmap</h1>
+            <h1>Confirmed Cases Heatmap</h1>
             <CSS.MapContainer>
                 <div style={{ height: '350px', width: '500px' }}>
                     <GoogleMapReact
