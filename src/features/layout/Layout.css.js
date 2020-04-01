@@ -87,10 +87,18 @@ export const Spinner = styled.div`
 
 export const MapContainer = styled.div`
     display: flex;
-    height: 100vw;
-    width: 100vh;
+    width: 75vh;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    min-height: 100vh;
+`;
+
+export const ResultsContainer = styled.div`
+    width: 100%;
+    top: 25%;
+    bottom: 0;
+    position: fixed;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding-bottom: 25px;
 `;

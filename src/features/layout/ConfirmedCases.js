@@ -18,7 +18,6 @@ export const ConfirmedCases = ({ country }) => {
 
     return (
         <div>
-            <h1>Confirmed Cases Heatmap</h1>
             <CSS.MapContainer>
                 <div style={{ height: '350px', width: '500px' }}>
                     <GoogleMapReact
