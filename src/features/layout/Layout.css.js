@@ -102,3 +102,12 @@ export const ResultsContainer = styled.div`
     overflow-x: hidden;
     padding-bottom: 25px;
 `;
+
+export const StateContainer = styled.div`
+    margin: 20px;
+    border: solid;
+    border-color: gray;
+    text-align: center;
+    width: 100%;
+    padding-bottom: 50px;
+`;

@@ -8,7 +8,7 @@ export const Footer = () => {
             vertical
             style={{
                 padding: '5em 0em',
-                position: 'absolute',
+                position: 'fixed',
                 width: '100%',
                 bottom: '0'
             }}
@@ -19,24 +19,24 @@ export const Footer = () => {
                         <Grid.Column width={3}>
                             <Header inverted as="h4" content="About" />
                             <List link inverted>
-                                <List.Item as="a">X</List.Item>
-                                <List.Item as="a">X</List.Item>
-                                <List.Item as="a">X</List.Item>
-                                <List.Item as="a">X</List.Item>
+                                <List.Item>X</List.Item>
+                                <List.Item>X</List.Item>
+                                <List.Item>X</List.Item>
+                                <List.Item>X</List.Item>
                             </List>
                         </Grid.Column>
                         <Grid.Column width={3}>
                             <Header inverted as="h4" content="Resources" />
                             <List link inverted>
-                                <List.Item as="a">
+                                <List.Item>
                                     <a href="https://newsapi.org/">News API</a>
                                 </List.Item>
-                                <List.Item as="a">
+                                <List.Item>
                                     <a href="https://documenter.getpostman.com/view/10808728/SzS8rjbc?version=latest">
                                         Postman Covid-19 Data
                                     </a>
                                 </List.Item>
-                                <List.Item as="a">
+                                <List.Item>
                                     <a href="https://github.com/rlindskog/covid19-graphql">
                                         GraphQL Covid-19 API
                                     </a>

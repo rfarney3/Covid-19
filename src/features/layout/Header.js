@@ -43,11 +43,11 @@ export class Head extends Component {
                             size="large"
                         >
                             <Container>
-                                <Menu.Item as="a">
+                                <Menu.Item>
                                     <a href="/">Home</a>
                                 </Menu.Item>
-                                <Menu.Item as="a">
-                                    <a href="/Testing">Testing</a>
+                                <Menu.Item>
+                                    <a href="/Testing">US Testing</a>
                                 </Menu.Item>
                             </Container>
                         </Menu>

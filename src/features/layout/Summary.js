@@ -41,7 +41,7 @@ export const Summary = () => {
 
     return (
         <>
-            <div class="ui placeholder segment">
+            <div style={{ marginTop: '-10px' }} class="ui placeholder segment">
                 <div class="ui two column stackable center aligned grid">
                     <div class="middle aligned row">
                         <div class="column">
