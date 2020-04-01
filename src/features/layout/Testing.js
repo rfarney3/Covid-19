@@ -16,13 +16,13 @@ export const Testing = () => {
         return tests.map(state => (
             <div class="four wide column">
                 <CSS.StateContainer>
-                    <Header as="h3" style={{ fontSize: '2em', padding: '0' }}>
+                    <Header as="h3" style={{ fontSize: '2em' }}>
                         {state.state}
                     </Header>
                     <List link inverted>
                         <List.Item style={{ color: 'black' }}>
-                            Tested Positive:{' '}
-                            {(state.positive / state.total) * 100}
+                            Patients Tested Positive:{' '}
+                            {((state.positive / state.total) * 100).toFixed(2)}%
                         </List.Item>
                         <List.Item style={{ color: 'black' }}>
                             Total Tested: {state.total}
@@ -45,5 +45,9 @@ export const Testing = () => {
         ));
     };
     console.log(tests);
-    return <div class="ui grid">{renderStates()}</div>;
+    return (
+        <div style={{ marginBottom: '350px' }} class="ui grid">
+            {renderStates()}
+        </div>
+    );
 };

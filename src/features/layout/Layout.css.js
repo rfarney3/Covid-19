@@ -23,14 +23,6 @@ export const StyledLink = styled(Link)`
     }
 `;
 
-export const TotalsContainer = styled.div`
-    display: flex
-    justify-content: flex-start;
-    height: 300px;
-    text-align: left;
-    overflow: scroll;
-`;
-
 export const Header = styled.div`
     display: flex;
     align-items: center;
@@ -38,13 +30,6 @@ export const Header = styled.div`
     height: 50px;
     background-color: gray;
     margin-bottom: 20px;
-`;
-
-export const Tab = styled.div`
-    padding: 5px;
-    &:hover {
-        background-color: white;
-    }
 `;
 
 export const CountryContainer = styled.div`
@@ -109,5 +94,5 @@ export const StateContainer = styled.div`
     border-color: gray;
     text-align: center;
     width: 100%;
-    padding-bottom: 50px;
+    padding-bottom: 10px;
 `;
